@@ -1,0 +1,19 @@
+.DS_Store
+.vscode
+.idea
+
+# npm
+node_modules
+npm-debug.log
+
+# env
+.env
+
+# tests
+test-results
+playwright-report
+qa-report
+**/.features-gen/**/*.spec.js
+
+.nx
+/update.sh
