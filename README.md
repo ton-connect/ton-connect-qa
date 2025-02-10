@@ -12,6 +12,10 @@ Describe step in folder [steps](steps)
 
 ```shell
 npm install
+npm run lint
+npm run format
 npx playwright install
 npm test
+# or
+npm run watch
 ```

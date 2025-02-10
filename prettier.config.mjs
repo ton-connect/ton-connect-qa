@@ -3,7 +3,7 @@ export default {
   useTabs: false,
   singleQuote: true,
   printWidth: 100,
-  semi: true,
+  semi: false,
   trailingComma: 'all',
   bracketSpacing: true,
   plugins: ['prettier-plugin-gherkin'],

@@ -7,8 +7,8 @@
     "watch:bdd": "nodemon -w ./features -w ./steps -e feature,js,ts --exec \"npx bddgen\"",
     "watch:pw": "playwright test --ui",
     "watch": "run-p watch:*",
-    "lint": "prettier --check steps",
-    "format": "prettier --write steps",
+    "lint": "prettier --check steps features",
+    "format": "prettier --write steps features",
     "report": "npx http-server ./qa-report -c-1 -o index.html"
   },
   "devDependencies": {

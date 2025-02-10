@@ -12,6 +12,7 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
+      - run: npm run lint
       - run: npx playwright install --with-deps
       - run: npm test
       - uses: actions/upload-artifact@v4
