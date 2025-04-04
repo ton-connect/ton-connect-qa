@@ -1,10 +1,11 @@
-import { defineConfig, devices } from '@playwright/test';
-import { defineBddConfig, cucumberReporter } from 'playwright-bdd';
+import 'dotenv/config'
+import { defineConfig, devices } from '@playwright/test'
+import { defineBddConfig, cucumberReporter } from 'playwright-bdd'
 
 const testDir = defineBddConfig({
   features: 'features/*.feature',
   steps: 'steps/*.ts',
-});
+})
 
 export default defineConfig({
   testDir,
@@ -26,4 +27,4 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-});
+})

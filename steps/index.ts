@@ -1,31 +1,46 @@
 import { expect } from '@playwright/test'
 import { Given, When, Then } from './fixtures'
-import { TonConnectWidget } from './TonConnectWidget'
+import { TonConnectWidget } from '../qa/TonConnectWidget'
 
 Given('I am open app {string}', async ({ page }, appUrl: string) => {
   await page.goto(appUrl)
 })
 
+When('I click on connect wallet {string}', async ({ page, wallet }, name: string) => {
+  const connectButton = page.getByRole('button', { name: 'Connect wallet to send the transaction' })
+  await new TonConnectWidget(page, connectButton).connectWallet(name)
+  await wallet.connect()
+})
+
 When('I click on connect button', async ({ page }) => {
-  const widget = new TonConnectWidget(page)
-  await widget.connectButton.click()
+  const connectButton = page.getByRole('button', { name: 'Connect wallet to send the transaction' })
+  await new TonConnectWidget(page, connectButton).connect()
 })
 
 When('I select wallet {string}', async ({ page }, name: string) => {
-  await new TonConnectWidget(page).selectWallet(name)
+  const connectButton = page.getByRole('button', { name: 'Connect wallet to send the transaction' })
+  await new TonConnectWidget(page, connectButton).clickButton(name)
 })
 
 When('I select option {string}', async ({ page }, name: string) => {
-  await new TonConnectWidget(page).selectOption(name)
+  const connectButton = page.getByRole('button', { name: 'Connect wallet to send the transaction' })
+  await new TonConnectWidget(page, connectButton).clickButton(name)
 })
 
 Then('I see widget with title {string}', async ({ page }, text: string) => {
-  const widget = new TonConnectWidget(page)
+  const connectButton = page.getByRole('button', { name: 'Connect wallet to send the transaction' })
+  const widget = new TonConnectWidget(page, connectButton)
   await expect(widget.title).toContainText([text])
 })
 
+Then('I see account {string}', async ({ page }, text: string) => {
+  const accountSelector = page.locator('div[data-tc-text]')
+  await expect(accountSelector).toHaveText(text)
+})
+
 Then('I see widget with second title {string}', async ({ page }, text: string) => {
-  const widget = new TonConnectWidget(page)
+  const connectButton = page.getByRole('button', { name: 'Connect wallet to send the transaction' })
+  const widget = new TonConnectWidget(page, connectButton)
   await expect(widget.titleSecond).toContainText([text])
 })
 

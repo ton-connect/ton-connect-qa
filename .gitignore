@@ -1,6 +1,7 @@
 .DS_Store
 .vscode
 .idea
+.cache*
 
 # npm
 node_modules
@@ -10,6 +11,7 @@ npm-debug.log
 .env
 
 # tests
+extension
 test-results
 playwright-report
 qa-report
