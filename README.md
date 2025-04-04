@@ -58,7 +58,7 @@ export default defineConfig({
 
 ```typescript
 // Import necessary modules and setup
-import { TonConnectWidget, testWith, tonkeeperFixture } from '../qa'
+import { TonConnectWidget, testWith, tonkeeperFixture } from '@tonconnect/qa'
 
 // Create a test instance Tonkeeper fixtures
 const test = testWith(tonkeeperFixture(process.env.WALLET_MNEMONIC!))
@@ -117,14 +117,13 @@ Describe step in folder [steps](steps)
 ## Develop
 
 ```shell
-npm install
-npm run lint
-npm run format
-npx playwright install
-pnpm exec playwright install
-npm test
-# or
-npm run watch
+pnpm install
+pnpm lint
+pnpm format
+pnpm playwright install
+pnpm test # simple bdd test from features/*.feature
+# for test with tonkeeper setup WALLET_MNEMONIC=".." in file .env
+pnpm tonkeeper
 ```
 
 ## Techstack
