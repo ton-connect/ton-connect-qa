@@ -1,9 +1,12 @@
 {
+  "extends": "@synthetixio/synpress-tsconfig/base.json",
   "compilerOptions": {
-    "target": "es2021",
-    "module": "nodenext",
-    "strict": true,
-    "noEmit": true
+    "rootDir": ".",
+    "esModuleInterop": true,
+    "exactOptionalPropertyTypes": false, // Allows for `undefined` in `playwright.config.ts`
+    "types": ["cypress"],
+    "sourceMap": false
   },
-  "include": ["**/*.ts"]
+  "include": ["playwright.config.ts", "steps", "qa"],
+  "files": ["environment.d.ts"]
 }
