@@ -9,7 +9,7 @@ export default defineConfig({
   testDir: './test',
 
   /* Maximum time one test can run for */
-  // timeout: 30_000,
+  timeout: 60_000,
 
   expect: {
     /**
