@@ -1,0 +1,12 @@
+{
+  "extends": "@synthetixio/synpress-tsconfig/base.json",
+  "compilerOptions": {
+    "rootDir": "qa",
+    "outDir": "types",
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true
+  },
+  "include": ["qa"],
+  "files": ["environment.d.ts"]
+}

@@ -133,6 +133,13 @@ pnpm tonkeeper
 - [Node.js](https://nodejs.org/) — main platform for automation implementation
 - [Playwright](https://playwright.dev/) + [BDD](https://vitalets.github.io/playwright-bdd/) — framework browser automation used for implementation steps uses in scenarios
 
+
+## Release
+
+```bash
+pnpm release [--dry-run]
+```
+
 ## TODO research
 
 - https://www.browserstack.com/
