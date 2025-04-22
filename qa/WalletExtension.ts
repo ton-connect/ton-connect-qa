@@ -25,7 +25,7 @@ export abstract class WalletExtension {
    */
   abstract importWallet(seedPhrase: string): Promise<void>
 
-  abstract connect(): Promise<void>
+  abstract connect(confirm?: boolean): Promise<void>
 
-  abstract accept(): Promise<void>
+  abstract accept(confirm?: boolean): Promise<void>
 }

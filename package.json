@@ -1,9 +1,25 @@
 {
-  "name": "ton-connect-qa",
+  "name": "@tonconnect/qa",
   "version": "1.0.0-alpha.0",
   "license": "MIT",
   "type": "module",
+  "exports": {
+    "types": "./types/index.d.ts",
+    "default": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./types/index.d.ts",
+  "files": [
+    "README.md",
+    "changelog.md",
+    "contributing.md",
+    "qa",
+    "types",
+    "dist"
+  ],
   "scripts": {
+    "build": "rm -fr dist && tsc --declaration --project tsconfig-release.json --outDir dist",
+    "release": "pnpm build && pnpm lint && pnpm test && pnpm release-it",
     "test": "npx bddgen && npx playwright test",
     "tonkeeper": "npx playwright test --config playwright-test.config.ts",
     "watch:bdd": "nodemon -w ./features -w ./steps -e feature,js,ts --exec \"npx bddgen\"",
@@ -12,6 +28,20 @@
     "lint": "prettier --check test qa steps features *.ts",
     "format": "prettier --write test qa steps features *.ts",
     "report": "npx http-server ./qa-report -c-1 -o index.html"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "release-it": {
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/keep-a-changelog": {
+        "filename": "changelog.md"
+      }
+    }
   },
   "prettier": {
     "tabWidth": 2,
@@ -27,6 +57,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.50.0",
+    "@release-it/keep-a-changelog": "^7.0.0",
     "@synthetixio/synpress": "^4.0.7",
     "@synthetixio/synpress-cache": "^0.0.7",
     "@synthetixio/synpress-tsconfig": "^0.0.8",
@@ -42,6 +73,7 @@
     "playwright-bdd": "^8.1.0",
     "prettier": "3.4.2",
     "prettier-plugin-gherkin": "^3.1.1",
+    "release-it": "^19.0.1",
     "typescript": "^5.7.2"
   },
   "dependencies": {

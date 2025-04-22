@@ -52,17 +52,25 @@ export class Tonkeeper extends WalletExtension {
     await recoveryPhrasePage.getByRole('button', { name: 'Save' }).click()
   }
 
-  async connect(): Promise<void> {
+  async connect(confirm?: boolean): Promise<void> {
     const acceptPage = await this.context.waitForEvent('page')
     await acceptPage.getByRole('button', { name: 'Connect wallet' }).click()
     await acceptPage.locator('#unlock-password').fill(this.password)
-    await acceptPage.getByRole('button', { name: 'Confirm' }).click()
+    if (confirm !== false) {
+      await acceptPage.getByRole('button', { name: 'Confirm' }).click()
+    } else {
+      await acceptPage.getByRole('button', { name: 'Cancel' }).click()
+    }
   }
 
-  async accept(): Promise<void> {
+  async accept(confirm?: boolean): Promise<void> {
     const acceptPage = await this.context.waitForEvent('page')
     await acceptPage.getByRole('button', { name: 'Confirm' }).click()
     await acceptPage.locator('#unlock-password').fill(this.password)
-    await acceptPage.getByRole('button', { name: 'Confirm' }).click()
+    if (confirm !== false) {
+      await acceptPage.getByRole('button', { name: 'Confirm' }).click()
+    } else {
+      await acceptPage.getByRole('button', { name: 'Cancel' }).click()
+    }
   }
 }
