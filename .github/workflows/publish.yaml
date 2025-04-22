@@ -30,4 +30,4 @@ jobs:
           tag: latest
           access: public
           provenance: true
-          dry-run: true
+          dry-run: false
