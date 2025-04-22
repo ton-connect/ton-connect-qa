@@ -9,6 +9,13 @@
   },
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ton-connect/ton-connect-qa"
+  },
+  "keywords": ["ton", "connect", "qa"],
+  "author": "tonconnect",
+  "license": "MIT",
   "files": [
     "README.md",
     "changelog.md",
