@@ -24,7 +24,17 @@ jobs:
       - run: pnpm install
       - run: pnpm lint
       - run: npx playwright install --with-deps
+      - run: pnpm dlx playwright@1.51.0 install-deps
+      # For now, we only need Chromium
+      - run: pnpm dlx playwright@1.51.0 install chromium
       - run: pnpm test
+      - name: Install linux dependencies
+        run: |
+          sudo apt-get install --no-install-recommends -y \
+          xvfb
+      - run: xvfb-run pnpm tonkeeper
+        env:
+          WALLET_MNEMONIC: ${{ secrets.WALLET_MNEMONIC }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
